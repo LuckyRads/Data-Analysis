@@ -1,5 +1,7 @@
 import numpy as np
 
+from logger import Logger
+
 
 class AverageStatistics():
 
@@ -11,6 +13,8 @@ class AverageStatistics():
         return self.__main_criteria
 
     def set_main_criteria(self, main_criteria):
+        Logger.log_command(
+            f'switching main analysis criteria to {main_criteria}')
         self.__main_criteria = main_criteria
 
     def print_statistics_summary(self, precision=0):

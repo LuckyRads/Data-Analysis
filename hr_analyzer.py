@@ -38,9 +38,11 @@ class HrAnalyzer(Analyzer):
         return None
 
     def transform_dataset(self):
+        Logger.log_command('transforming dataset to pandas data frame')
         self.__transformed_data = self._data[self.__supported_analysis_attributes]
 
     def drop_duplicates(self):
+        Logger.log_command('dropping duplicates')
         self.__transformed_data = self.__transformed_data.drop_duplicates()
 
     def get_statistics(self, statistics_type, attributes):

@@ -52,7 +52,11 @@ def main():
 
     average_statistics.set_main_criteria(attribute_to_analyze_4)
 
-    years_to_pay = average_statistics.get_statistics(attribute_to_analyze_2)
+    average_statistics.print_statistics_data(
+        attribute_to_analyze_4, ascending=True)
+
+    years_to_pay = average_statistics.get_statistics(
+        attribute_to_analyze_2, ascending=False)
     renderer.draw_plot('Years at the company', 'Average daily rate',
                        'Relation between years at the company and daily rate', years_to_pay)
 
