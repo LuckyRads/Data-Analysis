@@ -1,12 +1,22 @@
+import numpy as np
+
+
 class AverageStatistics():
 
-    def __init__(self, raw_statistics):
-        self.__age = raw_statistics['Age']
-        self.__daily_rate = raw_statistics['DailyRate']
-        self.__distance_from_home = raw_statistics['DistanceFromHome']
+    def __init__(self, average_statistics, data):
+        self.__average_statistics = average_statistics
+        self.__statistics_data_frame = data
+
+    def set_main_criteria(self, main_criteria):
+        self.__main_criteria = main_criteria
 
     def print_statistics(self, precision=0):
-        print(f'Average age: {round(self.__age, precision)}')
-        print(f'Average daily rate: {round(self.__daily_rate, precision)}')
-        print(
-            f'Average distance from home: {round(self.__distance_from_home, precision)}')
+        print('Average statistics:')
+
+        for attribute, value in self.__average_statistics.items():
+            print(f'Average {attribute}: {value:.{precision}f}')
+
+    def get_statistics(self, attribute):
+        grouped_statistics = self.__statistics_data_frame[[
+            self.__main_criteria, attribute]].groupby([self.__main_criteria])
+        return grouped_statistics.mean().sort_values(by=self.__main_criteria, ascending=True)

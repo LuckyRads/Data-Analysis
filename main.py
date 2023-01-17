@@ -13,18 +13,28 @@ def main():
     case_analyzer = HrAnalyzer(data_collector)
     case_analyzer.transform_dataset()
 
+    attribute_to_analyze_1 = 'Age'
+    attribute_to_analyze_2 = 'DailyRate'
+    attribute_to_analyze_3 = 'DistanceFromHome'
+
     # Specific analyzers can retrieve statistics for specific attributes.
     average_statistics = case_analyzer.get_average_statistics(
-        ['Age', 'DailyRate', 'DistanceFromHome'])
+        [attribute_to_analyze_1, attribute_to_analyze_2, attribute_to_analyze_3])
     average_statistics.print_statistics()
 
-    average_rates_for_age = case_analyzer.get_average_rates_for('Age')
-    average_rates_arrays = HrAnalyzer.transform_statistics_to_arrays(
-        average_rates_for_age)
-
     renderer = StatisticsRenderer()
-    renderer.draw_bar_plot('Age', 'Average daily rate', 'Average daily rate for age',
-                           average_rates_arrays[0], average_rates_arrays[1])
+
+    # Set base analysis criteria.
+    average_statistics.set_main_criteria(attribute_to_analyze_1)
+
+    age_to_pay_slice = average_statistics.get_statistics(
+        attribute_to_analyze_2)
+    renderer.draw_plot('Age', 'Average daily rate',
+                       'Average daily rate for age', age_to_pay_slice)
+
+    age_to_distance = average_statistics.get_statistics(attribute_to_analyze_3)
+    renderer.draw_plot('Age', 'Average distance from home',
+                       'Average distance from home for age', age_to_distance)
 
 
 if __name__ == '__main__':

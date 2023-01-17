@@ -69,28 +69,25 @@ class HrAnalyzer(Analyzer):
 
         return statistics
 
-    def get_average_rates_for(self, attribute='Age', mean=True):
-        parameter = 'DailyRate'
+        # attributes = np.array(self.__transformed_data[attribute])
+        # rates = np.array(self.__transformed_data[parameter])
 
-        attributes = np.array(self.__transformed_data[attribute])
-        rates = np.array(self.__transformed_data[parameter])
+        # average_rates = {}
+        # for i in range(len(attributes)):
+        #     if attributes[i] not in average_rates:
+        #         average_rates[attributes[i]] = []
+        #     average_rates[attributes[i]].append(rates[i])
 
-        average_rates = {}
-        for i in range(len(attributes)):
-            if attributes[i] not in average_rates:
-                average_rates[attributes[i]] = []
-            average_rates[attributes[i]].append(rates[i])
-
-        if mean is True:
-            for key, value in average_rates.items():
-                average_rates[key] = np.mean(value)
-            return average_rates
-        else:
-            return average_rates
+        # if mean is True:
+        #     for key, value in average_rates.items():
+        #         average_rates[key] = np.mean(value)
+        #     return average_rates
+        # else:
+        #     return average_rates
 
     def get_average_statistics(self, attributes):
         statistics = self.get_statistics('average', attributes)
-        return AverageStatistics(statistics)
+        return AverageStatistics(statistics, self.__transformed_data[[*attributes]])
 
     def print_statistics(self, statistic_type: str, attributes: str, precision=0):
         statistics = self.get_statistics(statistic_type, attributes)
