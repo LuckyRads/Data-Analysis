@@ -22,5 +22,6 @@ class DataCollector(ABC):
         pass
 
     def read_data(self):
-        Logger.log_command(f'read data using: {self.__logger}')
+        Logger.log_command(f'read data')
+        Logger.log_info(f'used reader: {self.__logger}')
         self.read_internal()

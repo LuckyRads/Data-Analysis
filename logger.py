@@ -1,14 +1,20 @@
 class Logger():
 
-    log_commands = True
-    log_results = True
+    should_log_commands = True
+    should_log_results = True
+    should_log_infos = True
 
     @staticmethod
     def log_command(command):
-        if Logger.log_commands:
-            print(f'Executing command: {command}')
+        if Logger.should_log_commands:
+            print(f'Command: {command}')
+
+    @staticmethod
+    def log_info(info):
+        if Logger.should_log_infos:
+            print(f'Info: {info}')
 
     @staticmethod
     def log_result(result):
-        if Logger.log_results:
+        if Logger.should_log_results:
             print(f'Result: {result}')
