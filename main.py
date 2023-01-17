@@ -20,12 +20,14 @@ def main():
     # Specific analyzers can retrieve statistics for specific attributes.
     average_statistics = case_analyzer.get_average_statistics(
         [attribute_to_analyze_1, attribute_to_analyze_2, attribute_to_analyze_3])
-    average_statistics.print_statistics()
+    average_statistics.print_statistics_summary()
 
     renderer = StatisticsRenderer()
 
     # Set base analysis criteria.
     average_statistics.set_main_criteria(attribute_to_analyze_1)
+
+    average_statistics.print_statistics_data(attribute_to_analyze_3)
 
     age_to_pay_slice = average_statistics.get_statistics(
         attribute_to_analyze_2)
