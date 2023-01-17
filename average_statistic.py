@@ -24,7 +24,7 @@ class AverageStatistics():
             self.__main_criteria, attribute]].groupby([self.__main_criteria])
         return grouped_statistics.mean().sort_values(by=self.__main_criteria, ascending=ascending)
 
-    def print_statistics_data(self, sort_by, ascending=False, precision=0):
+    def print_statistics_data(self, sort_by, ascending=False):
         grouped_statistics = self.__statistics_data_frame.groupby(
             [self.__main_criteria]).sum().sort_values(by=sort_by, ascending=ascending)
 

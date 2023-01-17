@@ -37,17 +37,6 @@ class HrAnalyzer(Analyzer):
             Logger.log_error(f'Attribute {attribute} does not exist')
         return None
 
-    @staticmethod
-    def transform_statistics_to_arrays(statistics: dict, sorted=True):
-        attributes = np.array(list(statistics.keys()))
-        values = np.array(list(statistics.values()))
-
-        if sorted is True:
-            attributes = np.sort(attributes)
-            values = np.sort(values)
-
-        return attributes, values
-
     def transform_dataset(self):
         self.__transformed_data = self._data[self.__attributes_to_analyze]
 
@@ -68,22 +57,6 @@ class HrAnalyzer(Analyzer):
             statistics[attribute] = raw_statistic
 
         return statistics
-
-        # attributes = np.array(self.__transformed_data[attribute])
-        # rates = np.array(self.__transformed_data[parameter])
-
-        # average_rates = {}
-        # for i in range(len(attributes)):
-        #     if attributes[i] not in average_rates:
-        #         average_rates[attributes[i]] = []
-        #     average_rates[attributes[i]].append(rates[i])
-
-        # if mean is True:
-        #     for key, value in average_rates.items():
-        #         average_rates[key] = np.mean(value)
-        #     return average_rates
-        # else:
-        #     return average_rates
 
     def get_average_statistics(self, attributes):
         statistics = self.get_statistics('average', attributes)

@@ -17,5 +17,9 @@ class Analyzer(ABC):
         pass
 
     @abstractmethod
+    def get_average_statistics(self, attributes):
+        pass
+
+    @abstractmethod
     def print_statistics(self, statistics_type, attributes, precision=2):
         pass
