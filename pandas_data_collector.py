@@ -7,7 +7,7 @@ from logger import Logger
 class PandasDataCollector(DataCollector):
 
     def __init__(self, input_filepath):
-        super().__init__(input_filepath, 'pandas')
+        super().__init__(input_filepath)
 
     def read_internal(self):
         self.__data = pandas.read_csv(self.filepath)

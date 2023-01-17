@@ -5,8 +5,7 @@ from logger import Logger
 
 class DataCollector(ABC):
 
-    def __init__(self, input_filepath, logger):
-        self.__logger = logger
+    def __init__(self, input_filepath):
         self.filepath = input_filepath
 
     @abstractmethod
@@ -23,5 +22,4 @@ class DataCollector(ABC):
 
     def read_data(self):
         Logger.log_command(f'read data')
-        Logger.log_info(f'used reader: {self.__logger}')
         self.read_internal()
