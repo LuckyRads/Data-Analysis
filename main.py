@@ -19,10 +19,12 @@ def main():
     average_statistics.print_statistics()
 
     average_rates_for_age = case_analyzer.get_average_rates_for('Age')
+    average_rates_arrays = HrAnalyzer.transform_statistics_to_arrays(
+        average_rates_for_age)
 
     renderer = StatisticsRenderer()
-    renderer.draw_bar_plot(average_rates_for_age, 'Age',
-                           'Average daily rate', 'Average daily rate for age')
+    renderer.draw_bar_plot('Age', 'Average daily rate', 'Average daily rate for age',
+                           average_rates_arrays[0], average_rates_arrays[1])
 
 
 if __name__ == '__main__':

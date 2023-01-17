@@ -37,6 +37,17 @@ class HrAnalyzer(Analyzer):
             Logger.log_error(f'Attribute {attribute} does not exist')
         return None
 
+    @staticmethod
+    def transform_statistics_to_arrays(statistics: dict, sorted=True):
+        attributes = np.array(list(statistics.keys()))
+        values = np.array(list(statistics.values()))
+
+        if sorted is True:
+            attributes = np.sort(attributes)
+            values = np.sort(values)
+
+        return attributes, values
+
     def transform_dataset(self):
         self.__transformed_data = self._data[self.__attributes_to_analyze]
 
