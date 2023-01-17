@@ -10,7 +10,8 @@ def main():
     case_analyzer = HrAnalyzer(data_collector.get_data())
     case_analyzer.transform_dataset()
     case_analyzer.print_raw_data()
-    case_analyzer.print_statistics('average')
+    case_analyzer.print_statistics(
+        'average', ['Age', 'DailyRate', 'DistanceFromHome'])
 
 
 if __name__ == '__main__':

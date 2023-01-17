@@ -18,3 +18,7 @@ class Logger():
     def log_result(result):
         if Logger.should_log_results:
             print(f'Result: {result}')
+
+    @staticmethod
+    def log_error(error):
+        print(f'Error: {error}')
