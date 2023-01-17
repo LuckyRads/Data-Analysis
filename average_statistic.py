@@ -17,6 +17,9 @@ class AverageStatistics():
             f'switching main analysis criteria to {main_criteria}')
         self.__main_criteria = main_criteria
 
+    def get_statistics_data_frame(self):
+        return self.__statistics_data_frame
+
     def print_statistics_summary(self, precision=0):
         print('Average statistics:')
 

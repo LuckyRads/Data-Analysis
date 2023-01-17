@@ -29,7 +29,7 @@ def main():
         attributes_to_analyze)
     average_statistics.print_statistics_summary()
 
-    renderer = StatisticsRenderer()
+    renderer = StatisticsRenderer('blue', 3)
 
     # Set base analysis criteria.
     average_statistics.set_main_criteria(attribute_to_analyze_1)
@@ -59,6 +59,10 @@ def main():
         attribute_to_analyze_2, ascending=False)
     renderer.draw_plot('Years at the company', 'Average daily rate',
                        'Relation between years at the company and daily rate', years_to_pay)
+
+    total_years_of_work = average_statistics.get_statistics_data_frame()[
+        attribute_to_analyze_4].sum()
+    print(f'Total years worked: {total_years_of_work}')
 
 
 if __name__ == '__main__':
