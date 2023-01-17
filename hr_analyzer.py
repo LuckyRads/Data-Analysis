@@ -8,14 +8,14 @@ from logger import Logger
 
 class HrAnalyzer(Analyzer):
 
-    __attributes_to_analyze = ['Age', 'Attrition', 'BusinessTravel', 'DailyRate',
-                               'Department', 'DistanceFromHome', 'Education', 'EducationField']
+    __supported_analysis_attributes = ['Age', 'Attrition', 'BusinessTravel', 'DailyRate',
+                                       'Department', 'DistanceFromHome', 'Education', 'EducationField', 'YearsAtCompany']
 
     def get_attributes_to_analyze(self):
-        return self.__attributes_to_analyze
+        return self.__supported_analysis_attributes
 
     def set_attributes_to_analyze(self, attributes: list):
-        self.__attributes_to_analyze = attributes
+        self.__supported_analysis_attributes = attributes
 
     def __does_attribute_fit_statistic_type(self, attribute: str, statistic_type: str) -> bool:
         try:
@@ -38,7 +38,7 @@ class HrAnalyzer(Analyzer):
         return None
 
     def transform_dataset(self):
-        self.__transformed_data = self._data[self.__attributes_to_analyze]
+        self.__transformed_data = self._data[self.__supported_analysis_attributes]
 
     def print_raw_data(self):
         print(self._data)

@@ -16,10 +16,14 @@ def main():
     attribute_to_analyze_1 = 'Age'
     attribute_to_analyze_2 = 'DailyRate'
     attribute_to_analyze_3 = 'DistanceFromHome'
+    attribute_to_analyze_4 = 'YearsAtCompany'
+
+    attributes_to_analyze = [attribute_to_analyze_1, attribute_to_analyze_2,
+                             attribute_to_analyze_3, attribute_to_analyze_4]
 
     # Specific analyzers can retrieve statistics for specific attributes.
     average_statistics = case_analyzer.get_average_statistics(
-        [attribute_to_analyze_1, attribute_to_analyze_2, attribute_to_analyze_3])
+        attributes_to_analyze)
     average_statistics.print_statistics_summary()
 
     renderer = StatisticsRenderer()
