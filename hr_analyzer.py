@@ -40,8 +40,8 @@ class HrAnalyzer(Analyzer):
     def transform_dataset(self):
         self.__transformed_data = self._data[self.__supported_analysis_attributes]
 
-    def print_raw_data(self):
-        print(self._data)
+    def drop_duplicates(self):
+        self.__transformed_data = self.__transformed_data.drop_duplicates()
 
     def get_statistics(self, statistics_type, attributes):
         statistics = {}
@@ -61,6 +61,9 @@ class HrAnalyzer(Analyzer):
     def get_average_statistics(self, attributes):
         statistics = self.get_statistics('average', attributes)
         return AverageStatistics(statistics, self.__transformed_data[[*attributes]])
+
+    def print_raw_data(self):
+        print(self._data)
 
     def print_statistics(self, statistic_type: str, attributes: str, precision=0):
         statistics = self.get_statistics(statistic_type, attributes)

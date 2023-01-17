@@ -13,11 +13,14 @@ def main():
     case_analyzer = HrAnalyzer(data_collector)
     case_analyzer.transform_dataset()
 
+    # Additional operations to prepare the data for analysis.
+    case_analyzer.drop_duplicates()
+
+    # Set attributes to analyze.
     attribute_to_analyze_1 = 'Age'
     attribute_to_analyze_2 = 'DailyRate'
     attribute_to_analyze_3 = 'DistanceFromHome'
     attribute_to_analyze_4 = 'YearsAtCompany'
-
     attributes_to_analyze = [attribute_to_analyze_1, attribute_to_analyze_2,
                              attribute_to_analyze_3, attribute_to_analyze_4]
 
@@ -31,7 +34,10 @@ def main():
     # Set base analysis criteria.
     average_statistics.set_main_criteria(attribute_to_analyze_1)
 
+    # Print base analysis attributes.
     average_statistics.print_statistics_data(attribute_to_analyze_3)
+
+    # Specific analysis cases.
 
     age_to_pay_slice = average_statistics.get_statistics(
         attribute_to_analyze_2)
@@ -41,6 +47,14 @@ def main():
     age_to_distance = average_statistics.get_statistics(attribute_to_analyze_3)
     renderer.draw_plot('Age', 'Average distance from home',
                        'Average distance from home for age', age_to_distance)
+
+    # Switching base analysis criteria.
+
+    average_statistics.set_main_criteria(attribute_to_analyze_4)
+
+    years_to_pay = average_statistics.get_statistics(attribute_to_analyze_2)
+    renderer.draw_plot('Years at the company', 'Average daily rate',
+                       'Relation between years at the company and daily rate', years_to_pay)
 
 
 if __name__ == '__main__':
